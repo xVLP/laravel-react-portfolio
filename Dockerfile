@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN chmod -R +x node_modules/.bin && npm run build
+RUN node node_modules/vite/bin/vite.js build
 
 # Stage 2: Production PHP 8.2 + Nginx Server
 FROM serversideup/php:8.2-fpm-nginx AS production
