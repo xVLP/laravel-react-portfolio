@@ -4,9 +4,9 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN npm run build
+RUN chmod -R +x node_modules/.bin && npm run build
 
-# Stage 2: Production PHP 8.2 + Nginx Server (Pre-configured for Laravel)
+# Stage 2: Production PHP 8.2 + Nginx Server
 FROM serversideup/php:8.2-fpm-nginx AS production
 
 ENV AUTORUN_ENABLED=true
