@@ -18,4 +18,9 @@ class PortfolioController extends Controller
             'experiences' => Experience::orderBy('order')->get(),
         ]);
     }
+
+    public function downloadCv()
+    {
+        return view('cv');
+    }
 }

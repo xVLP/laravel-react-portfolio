@@ -65,7 +65,7 @@ export default function ParticleCanvas() {
                     if (dist < mouse.radius) {
                         p.alpha = Math.min(1, p.baseAlpha + (1 - dist / mouse.radius) * 0.5);
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(0, 242, 254, ${(1 - dist / mouse.radius) * 0.25})`;
+                        ctx.strokeStyle = `rgba(224, 122, 95, ${(1 - dist / mouse.radius) * 0.25})`;
                         ctx.lineWidth = 0.8;
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(mouse.x, mouse.y);
@@ -78,9 +78,9 @@ export default function ParticleCanvas() {
                 // Render particle dot
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(0, 242, 254, ${p.alpha})`;
+                ctx.fillStyle = `rgba(244, 162, 97, ${p.alpha})`;
                 ctx.shadowBlur = 8;
-                ctx.shadowColor = '#00f2fe';
+                ctx.shadowColor = '#E07A5F';
                 ctx.fill();
                 ctx.shadowBlur = 0;
             }
@@ -96,7 +96,7 @@ export default function ParticleCanvas() {
 
                     if (dist < 110) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(0, 242, 254, ${(1 - dist / 110) * 0.12})`;
+                        ctx.strokeStyle = `rgba(210, 166, 121, ${(1 - dist / 110) * 0.15})`;
                         ctx.lineWidth = 0.5;
                         ctx.moveTo(p1.x, p1.y);
                         ctx.lineTo(p2.x, p2.y);

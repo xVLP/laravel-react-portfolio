@@ -12,6 +12,7 @@ use Inertia\Inertia;
 
 // Public Portfolio Route
 Route::get('/', [PortfolioController::class, 'index'])->name('home');
+Route::get('/cv', [PortfolioController::class, 'downloadCv'])->name('cv.download');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // Guest Authentication Routes

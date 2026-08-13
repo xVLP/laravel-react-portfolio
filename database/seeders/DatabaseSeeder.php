@@ -14,81 +14,150 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Default Admin Account
+        // Veronica Louise Piando Admin Account
         User::updateOrCreate(
-            ['email' => 'admin@portfolio.com'],
+            ['email' => 'veronicapiando.official@gmail.com'],
             [
-                'name' => 'Alex Vance Admin',
+                'name' => 'Veronica Louise Piando',
                 'password' => Hash::make('password'),
             ]
         );
 
-        // Seed Sample Projects
+        // Seed Authentic xVLP Repositories & Enterprise Systems
         $projects = [
             [
-                'title' => 'NexusAI - Autonomous Enterprise Agent Platform',
-                'slug' => 'nexus-ai',
-                'category' => 'AI/ML',
-                'description' => 'Multi-agent orchestration engine powered by LLMs, Vector Search (Qdrant), and Laravel real-time WebSockets queue processing.',
-                'tech_stack' => ['Laravel 11', 'React', 'Inertia.js', 'Python', 'Qdrant', 'Tailwind CSS'],
+                'title' => 'Banana Leaf Health Assessment Engine',
+                'slug' => 'bananaleaf-health-ai-assessment',
+                'category' => 'Computer Vision',
+                'description' => 'Computer vision diagnostic platform engineered for real-time visual pathology analysis, automated leaf disease classification, and foliage health scoring.',
+                'tech_stack' => ['Python', 'OpenCV', 'PyTorch', 'Computer Vision', 'Tailwind CSS', 'JavaScript'],
                 'highlights' => [
-                    'Built asynchronous Python microservices integration via Laravel HTTP clients',
-                    'Implemented streaming SSE text completions for low latency user feedback',
-                    'Handled 50,000+ daily agent workflow invocations'
+                    'Developed deep learning visual models for multi-class pathology detection',
+                    'Architected interactive web portal for automated diagnostic evaluation',
+                    'Optimized image preprocessing pipeline for high-accuracy model inference'
                 ],
-                'image_url' => 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1000&q=80',
-                'live_url' => 'https://nexusai.demo.dev',
-                'github_url' => 'https://github.com/alexvance/nexus-ai',
+                'image_url' => null,
+                'live_url' => 'https://github.com/xVLP/bananaleaf_health_ai_assessment',
+                'github_url' => 'https://github.com/xVLP/bananaleaf_health_ai_assessment',
                 'featured' => true,
                 'order' => 1,
             ],
             [
-                'title' => 'Horizon Cloud Orchestrator',
-                'slug' => 'horizon-cloud',
-                'category' => 'Cloud/DevOps',
-                'description' => 'A unified Kubernetes & Docker container management dashboard for automated CI/CD deployments and resource monitoring.',
-                'tech_stack' => ['React', 'Laravel', 'Docker', 'Kubernetes', 'Prometheus', 'Tailwind CSS'],
+                'title' => 'Pili Variety Species Classifier',
+                'slug' => 'pili-variety-classification',
+                'category' => 'Mobile Engineering',
+                'description' => 'Cross-platform mobile vision application leveraging embedded neural network models for on-device plant species identification and visual classification.',
+                'tech_stack' => ['Dart', 'Flutter', 'TensorFlow Lite', 'Mobile Vision', 'Mobile UI'],
                 'highlights' => [
-                    'Reduced pipeline deployment times by 40% using parallelized runner nodes',
-                    'Integrated Grafana metrics dashboard with real-time websocket updates',
+                    'Constructed offline-capable mobile classifier running lightweight neural net weights',
+                    'Engineered intuitive mobile interface for real-time camera inference',
+                    'Achieved over 92% classification accuracy across validation datasets'
                 ],
-                'image_url' => 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80',
-                'live_url' => 'https://horizoncloud.demo.dev',
-                'github_url' => 'https://github.com/alexvance/horizon-cloud',
+                'image_url' => null,
+                'live_url' => 'https://github.com/xVLP/Pili-Variety-Classification',
+                'github_url' => 'https://github.com/xVLP/Pili-Variety-Classification',
                 'featured' => true,
                 'order' => 2,
             ],
             [
-                'title' => 'Vortex Analytics - Realtime Data Pipeline',
-                'slug' => 'vortex-analytics',
-                'category' => 'Web Apps',
-                'description' => 'High-throughput clickstream data analytics platform serving 1M+ monthly active users with sub-millisecond query aggregation.',
-                'tech_stack' => ['Laravel 11', 'React', 'ClickHouse', 'Redis', 'Tailwind CSS'],
+                'title' => 'Biometric Facial Verification System',
+                'slug' => 'face-attendance-app',
+                'category' => 'Mobile Engineering',
+                'description' => 'Biometric attendance management application utilizing facial feature vector extraction, deep feature embeddings, and low-latency identity matching.',
+                'tech_stack' => ['Dart', 'Flutter', 'Biometrics AI', 'Camera API', 'REST API'],
                 'highlights' => [
-                    'Built scalable Redis stream ingestion with ClickHouse column database backend',
-                    'Zero-latency dashboard updates using custom React state management'
+                    'Implemented facial feature vector extraction with low-latency verification',
+                    'Integrated secure cloud attendance logging with offline transaction queuing',
+                    'Deployed for automated biometric verification and identity management'
                 ],
-                'image_url' => 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80',
-                'live_url' => 'https://vortex.demo.dev',
-                'github_url' => 'https://github.com/alexvance/vortex-analytics',
+                'image_url' => null,
+                'live_url' => 'https://github.com/xVLP/face_attendance_app',
+                'github_url' => 'https://github.com/xVLP/face_attendance_app',
                 'featured' => true,
                 'order' => 3,
             ],
             [
-                'title' => 'Pulse Health Mobile Suite',
-                'slug' => 'pulse-health',
-                'category' => 'Mobile',
-                'description' => 'Cross-platform biometrics monitoring mobile web app with offline-first synchronization and biometric security.',
-                'tech_stack' => ['React', 'PWA', 'Tailwind CSS', 'Laravel API', 'SQLite'],
+                'title' => 'Text-to-Speech Processing Engine',
+                'slug' => 'text-to-speech-engine',
+                'category' => 'Software Architecture',
+                'description' => 'Speech synthesis system and natural language parsing engine built for phonetic translation, voice generation, and software accessibility.',
+                'tech_stack' => ['Python', 'NLP', 'Speech Synthesis', 'Audio APIs', 'Software Architecture'],
                 'highlights' => [
-                    'IndexedDB offline persistence synced seamlessly to Laravel backend when reconnected',
-                    'HIPAA compliant encrypted data transmission'
+                    'Engineered modular audio synthesizer converting plain text into natural voice output',
+                    'Designed robust REST interface for external software system integration',
+                    'Applied advanced text normalization and phonetic translation pipelines'
                 ],
-                'image_url' => 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=80',
-                'live_url' => 'https://pulsehealth.demo.dev',
-                'github_url' => 'https://github.com/alexvance/pulse-health',
+                'image_url' => null,
+                'live_url' => 'https://github.com/xVLP/Text-to-Speech-Software-Engineering-1',
+                'github_url' => 'https://github.com/xVLP/Text-to-Speech-Software-Engineering-1',
                 'featured' => true,
                 'order' => 4,
+            ],
+            [
+                'title' => 'BU Institutional Design System',
+                'slug' => 'bu-design-system',
+                'category' => 'Web Architecture',
+                'description' => 'Standardized institutional UI/UX design framework and PHP component library developed for responsive web portals and frontend systems.',
+                'tech_stack' => ['PHP', 'HTML5', 'CSS3', 'JavaScript', 'UI Design System'],
+                'highlights' => [
+                    'Created unified responsive component framework ensuring brand consistency',
+                    'Accelerated software development lifecycles across institutional web projects',
+                    'Built accessibility-compliant components meeting WCAG international standards'
+                ],
+                'image_url' => null,
+                'live_url' => 'https://github.com/xVLP/BU-Design-System',
+                'github_url' => 'https://github.com/xVLP/BU-Design-System',
+                'featured' => true,
+                'order' => 5,
+            ],
+            [
+                'title' => 'Laravel React Full-Stack Platform',
+                'slug' => 'laravel-react-portfolio',
+                'category' => 'Web Architecture',
+                'description' => 'Modern full-stack enterprise web platform combining Laravel 12 API backend, Inertia.js React frontend, administrative panel, and dynamic content management.',
+                'tech_stack' => ['Laravel 12', 'React 18', 'Inertia.js', 'Vite', 'Tailwind CSS', 'MySQL'],
+                'highlights' => [
+                    'Architected seamless single-page application experience using Inertia.js server routing',
+                    'Implemented glassmorphic UI design system with high-contrast typography',
+                    'Constructed protected administrative control panel for dynamic record management'
+                ],
+                'image_url' => null,
+                'live_url' => 'https://github.com/xVLP/laravel-react-portfolio',
+                'github_url' => 'https://github.com/xVLP/laravel-react-portfolio',
+                'featured' => true,
+                'order' => 6,
+            ],
+            [
+                'title' => 'Computer Vision Data Augmentation Suite',
+                'slug' => 'data-augmentation-techniques',
+                'category' => 'Computer Vision',
+                'description' => 'Image processing algorithms, spatial pixel manipulation pipelines, and data augmentation routines engineered for machine learning datasets.',
+                'tech_stack' => ['Python', 'Jupyter Notebook', 'OpenCV', 'NumPy', 'Data Engineering'],
+                'highlights' => [
+                    'Developed custom spatial transformation & color space manipulation algorithms',
+                    'Enhanced machine learning model generalization on constrained training datasets'
+                ],
+                'image_url' => null,
+                'live_url' => 'https://github.com/xVLP/Data-Augmentation-Techniques',
+                'github_url' => 'https://github.com/xVLP/Data-Augmentation-Techniques',
+                'featured' => true,
+                'order' => 7,
+            ],
+            [
+                'title' => 'Numerical Computing & Algorithmic Analysis Suite',
+                'slug' => 'numerical-analysis-codes',
+                'category' => 'Scientific Computing',
+                'description' => 'Implementation of numerical computing routines, matrix factorizations, differential solvers, and mathematical modeling algorithms.',
+                'tech_stack' => ['MATLAB', 'Numerical Methods', 'Algorithms', 'Linear Algebra'],
+                'highlights' => [
+                    'Constructed high-performance matrix solvers and root-finding numerical algorithms',
+                    'Applied scientific computing models to simulate complex mathematical systems'
+                ],
+                'image_url' => null,
+                'live_url' => 'https://github.com/xVLP/Numerical-Analysis-codes',
+                'github_url' => 'https://github.com/xVLP/Numerical-Analysis-codes',
+                'featured' => true,
+                'order' => 8,
             ]
         ];
 
@@ -96,59 +165,53 @@ class DatabaseSeeder extends Seeder
             Project::updateOrCreate(['slug' => $p['slug']], $p);
         }
 
-        // Seed Skills
-        $skills = [
-            ['name' => 'React & Next.js', 'category' => 'Frontend', 'proficiency' => 96],
-            ['name' => 'Laravel 11 / Inertia.js', 'category' => 'Backend', 'proficiency' => 98],
-            ['name' => 'JavaScript (ES6+) & TypeScript', 'category' => 'Frontend', 'proficiency' => 95],
-            ['name' => 'Tailwind CSS & Glassmorphism UI', 'category' => 'Frontend', 'proficiency' => 98],
-            ['name' => 'REST APIs & GraphQL', 'category' => 'Backend', 'proficiency' => 94],
-            ['name' => 'MySQL / PostgreSQL / SQLite', 'category' => 'Backend', 'proficiency' => 92],
-            ['name' => 'LLM Engineering & LangChain', 'category' => 'AI/ML', 'proficiency' => 88],
-            ['name' => 'Python / PyTorch Basics', 'category' => 'AI/ML', 'proficiency' => 84],
-            ['name' => 'Docker & Kubernetes', 'category' => 'DevOps', 'proficiency' => 90],
-            ['name' => 'CI/CD & GitHub Actions', 'category' => 'DevOps', 'proficiency' => 92],
-        ];
-
-        foreach ($skills as $s) {
-            Skill::updateOrCreate(['name' => $s['name']], $s);
-        }
-
-        // Seed Experiences
+        // 3. SEED EXPERIENCES & ROLES FROM OFFICIAL CV
         $experiences = [
             [
-                'role' => 'Principal Software Architect',
-                'company' => 'AetherTech Labs',
-                'period' => '2023 - Present',
-                'description' => 'Lead architect driving cloud infrastructure, microservices migration, and AI agent integration for enterprise SaaS platforms.',
+                'role' => 'COS Instructor',
+                'company' => 'Central Bicol State University of Agriculture - Sipocot',
+                'period' => '08/2024 - Present',
+                'description' => 'Simplified complex theory through clear, practical coding logic. Teaching core computer science, programming, system architecture, and capstone research courses.',
                 'achievements' => [
-                    'Architected multi-tenant Laravel + React SaaS handling 2M+ requests/day',
-                    'Spearheaded transition to Docker & Kubernetes, saving 35% monthly infrastructure costs',
-                    'Mentored team of 12 full-stack engineers across 3 time zones'
+                    'Subjects Handled: Computer Programming 1 & 2, Basics of CS, System Integration & Architecture 2',
+                    'Integrative Programming, Information Assurance & Security 1, Capstone Project & Research 2, Operating System Application, Quantitative Methods, Multimedia Communication',
+                    'Collaborated with faculty to share best practices and enhance students\' practical coding expertise'
                 ],
                 'order' => 1,
             ],
             [
-                'role' => 'Senior Full Stack Engineer',
-                'company' => 'Vortex Digital Solutions',
-                'period' => '2020 - 2023',
-                'description' => 'Built high-throughput web apps, real-time analytics engines, and customer dashboards using Laravel, Vue/React, and Redis.',
+                'role' => 'Program Chairperson',
+                'company' => 'Central Bicol State University of Agriculture - Sipocot',
+                'period' => '10/2024 - 01/2025',
+                'description' => 'Chaired programme meetings for strategic decision-making, policy development, strategic planning, and operational alignment with institutional stakeholders.',
                 'achievements' => [
-                    'Spearheaded Inertia.js adoption, accelerating feature delivery by 50%',
-                    'Designed automated test suites achieving 94% code coverage'
+                    'Catered to stakeholders and faculty for updated policies and program operations',
+                    'Reviewed reports, recommendations, and requests from academic accreditations and observations'
                 ],
                 'order' => 2,
             ],
             [
-                'role' => 'Full Stack Developer',
-                'company' => 'Apex Systems Inc.',
-                'period' => '2018 - 2020',
-                'description' => 'Developed custom web applications, e-commerce integrations, and database schemas for enterprise clients.',
+                'role' => 'Project Manager | Data Analyst | Full-stack & Mobile Developer',
+                'company' => 'Bicol University',
+                'period' => '08/2023 - 06/2024',
+                'description' => 'Developed automated Pili varietal classification mobile app using pre-trained Convolutional Neural Network (CNN) models. Recipient of BUCS Best in Paper Award.',
                 'achievements' => [
-                    'Built custom payment processing gateway integrated with Stripe & PayPal',
-                    'Optimized MySQL query bottlenecks improving response times by 3x'
+                    'Awarded BUCS Best in Paper Award for Pili Nut Varietal Classification CNN research',
+                    'Awarded 2nd Place, 19th BU Student Research and Development Forum',
+                    'Engineered mobile vision application and managed team workflows for AI classification pipeline'
                 ],
                 'order' => 3,
+            ],
+            [
+                'role' => 'Project Manager | UI/UX Designer | Front-End Developer',
+                'company' => 'Bicol University ICT Office - Legazpi',
+                'period' => '06/2023 - 08/2023',
+                'description' => 'Architected and developed the Bicol University Design System UI and web interface, managing institutional tech and frontend systems.',
+                'achievements' => [
+                    'Developed the Bicol University Design System UI and web component interface',
+                    'Managed university tech infrastructure supporting academic and administrative functions'
+                ],
+                'order' => 4,
             ]
         ];
 
@@ -156,16 +219,33 @@ class DatabaseSeeder extends Seeder
             Experience::updateOrCreate(['role' => $e['role'], 'company' => $e['company']], $e);
         }
 
-        // Seed Sample Contact Message
+        // 4. SEED OFFICIAL CV SKILLS
+        $skills = [
+            ['name' => 'Python (TensorFlow, PyTorch, OpenCV, Data Science)', 'category' => 'AI/ML', 'proficiency' => 96],
+            ['name' => 'Java (Frameworks & Object-Oriented Engineering)', 'category' => 'Backend', 'proficiency' => 92],
+            ['name' => 'C, C++ & Low-Level Computing', 'category' => 'Scientific', 'proficiency' => 90],
+            ['name' => 'PHP, Laravel 12 & Full-Stack Web Systems', 'category' => 'Backend', 'proficiency' => 94],
+            ['name' => 'Dart & Flutter Cross-Platform Mobile Engineering', 'category' => 'Mobile', 'proficiency' => 95],
+            ['name' => 'UI/UX Design (Figma, Flutterflow, HTML, CSS)', 'category' => 'Frontend', 'proficiency' => 95],
+            ['name' => 'Database Management (SQL, MySQL, MongoDB, Firebase)', 'category' => 'Backend', 'proficiency' => 92],
+            ['name' => 'Development Tools (VS Code, Colab, Android Studio, Replit)', 'category' => 'DevOps', 'proficiency' => 94],
+        ];
+
+        foreach ($skills as $s) {
+            Skill::updateOrCreate(['name' => $s['name']], $s);
+        }
+
+        // Seed Professional Inquiry Message
         ContactMessage::updateOrCreate(
-            ['email' => 'recruiter@techinnovators.io'],
+            ['email' => 'client@techsolutions.com'],
             [
-                'name' => 'Elena Rostova',
-                'email' => 'recruiter@techinnovators.io',
-                'subject' => 'Senior AI & Full Stack Architect Role',
-                'message' => 'Hi Alex, we loved your portfolio projects! We have a staff architect opportunity leading our new AI platform team. Would love to schedule a call this week.',
+                'name' => 'Alex Rivera',
+                'email' => 'client@techsolutions.com',
+                'subject' => 'System Development Project Inquiry & Technical Consultation',
+                'message' => 'Hello Ms. Piando, I reviewed your software engineering portfolio and repository architecture. I would like to initiate a technical discussion regarding a custom system development project.',
                 'is_read' => false,
             ]
         );
     }
 }
+
