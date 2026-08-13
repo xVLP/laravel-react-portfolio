@@ -3,6 +3,10 @@ FROM serversideup/php:8.2-fpm-nginx AS production
 
 ENV AUTORUN_ENABLED=true
 ENV WEBROOT=/var/www/html/public
+ENV PORT=8080
+ENV HTTP_PORT=8080
+EXPOSE 8080
+
 WORKDIR /var/www/html
 
 # Copy application files (including pre-compiled public/build assets)
