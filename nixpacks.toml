@@ -1,0 +1,25 @@
+[providers]
+providers = ["php", "node"]
+
+[phases.setup]
+nixPkgs = [
+    "php82",
+    "php82Extensions.pdo",
+    "php82Extensions.pdo_sqlite",
+    "php82Extensions.pdo_mysql",
+    "php82Extensions.mbstring",
+    "php82Extensions.gd",
+    "php82Extensions.bcmath",
+    "composer",
+    "nodejs_20"
+]
+
+[phases.build]
+cmds = [
+    "npm ci",
+    "npm run build",
+    "composer install --no-dev --optimize-autoloader --no-interaction"
+]
+
+[start]
+cmd = "touch database/database.sqlite && php artisan migrate --force --seed && php artisan serve --host=0.0.0.0 --port=$PORT"

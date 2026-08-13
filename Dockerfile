@@ -1,42 +1,46 @@
-# Multi-stage Dockerfile for Laravel + React (Inertia) Deployment
-FROM node:20-alpine as frontend
+# Multi-stage Dockerfile for Laravel + Inertia React Portfolio
+FROM node:20-slim as frontend
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM php:8.2-fpm-alpine
+FROM php:8.2-cli
 WORKDIR /var/www/html
 
-# Install System Dependencies & PHP Extensions
-RUN apk add --no-cache \
-    nginx \
-    sqlite-dev \
-    libpng-dev \
-    libjpeg-turbo-dev \
-    freetype-dev \
-    zip \
-    unzip \
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
     git \
     curl \
-    oniguruma-dev
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip \
+    sqlite3 \
+    libsqlite3-dev \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install pdo pdo_sqlite pdo_mysql mbstring gd bcmath
+# Install PHP extensions required by Laravel & SQLite/MySQL
+RUN docker-php-ext-install pdo pdo_sqlite pdo_mysql mbstring bcmath
 
-# Copy Composer from official image
+# Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copy Project Files
+# Copy application files
 COPY . .
 COPY --from=frontend /app/public/build ./public/build
 
-# Install PHP dependencies
+# Install PHP production dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+# Create SQLite database if missing & set permissions
+RUN touch database/database.sqlite \
+    && chmod -R 777 storage bootstrap/cache database
 
-# Nginx & PHP Start Script
+# Expose port (Railway / Render / Fly.io sets PORT env variable)
+ENV PORT=8080
 EXPOSE 8080
-CMD ["sh", "-c", "php artisan migrate --force && php artisan config:cache && php artisan route:cache && php artisan view:cache && php-fpm -D && nginx -g 'daemon off;'"]
+
+CMD ["sh", "-c", "touch database/database.sqlite && php artisan migrate --force --seed && php artisan serve --host=0.0.0.0 --port=${PORT:-8080}"]
