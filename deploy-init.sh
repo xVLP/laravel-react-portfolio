@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
 
+echo "==> Clearing old application caches..."
+php /var/www/html/artisan optimize:clear || true
+
 echo "==> Running Laravel database migrations..."
 php /var/www/html/artisan migrate --force
 
