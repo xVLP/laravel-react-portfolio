@@ -1,18 +1,15 @@
 #!/bin/sh
 set -e
 
-echo "==> Clearing old application caches..."
+echo "==> Clearing application caches..."
 php /var/www/html/artisan optimize:clear || true
 
-echo "==> Running Laravel database migrations..."
-php /var/www/html/artisan migrate --force
+echo "==> Rebuilding database schema and seeding default data..."
+php /var/www/html/artisan migrate:fresh --force --seed
 
-echo "==> Seeding database..."
-php /var/www/html/artisan db:seed --force
+echo "==> Caching routes and views..."
+php /var/www/html/artisan config:cache || true
+php /var/www/html/artisan route:cache || true
+php /var/www/html/artisan view:cache || true
 
-echo "==> Caching configuration and routes..."
-php /var/www/html/artisan config:cache
-php /var/www/html/artisan route:cache
-php /var/www/html/artisan view:cache
-
-echo "==> Deployment init completed successfully!"
+echo "==> Deployment initialization finished successfully!"
