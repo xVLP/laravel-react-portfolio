@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Veronica Louise Piando Admin Accounts
+        // Veronica Louise Piando (xVLP) Primary Admin Account
         User::updateOrCreate(
             ['email' => 'veronicapiando.official@gmail.com'],
             [
@@ -27,8 +27,8 @@ class DatabaseSeeder extends Seeder
         User::updateOrCreate(
             ['email' => 'xvlp@portfolio.com'],
             [
-                'name' => 'xVLP',
-                'username' => 'xVLP',
+                'name' => 'xVLP Admin',
+                'username' => 'admin_xvlp',
                 'password' => Hash::make('lolnicalol23'),
             ]
         );
@@ -258,4 +258,3 @@ class DatabaseSeeder extends Seeder
         );
     }
 }
-
