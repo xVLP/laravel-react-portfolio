@@ -19,15 +19,17 @@ class DatabaseSeeder extends Seeder
             ['email' => 'veronicapiando.official@gmail.com'],
             [
                 'name' => 'Veronica Louise Piando',
-                'password' => Hash::make('password'),
+                'username' => 'xVLP',
+                'password' => Hash::make('lolnicalol23'),
             ]
         );
 
         User::updateOrCreate(
-            ['email' => 'admin@portfolio.com'],
+            ['email' => 'xvlp@portfolio.com'],
             [
-                'name' => 'Administrator',
-                'password' => Hash::make('password'),
+                'name' => 'xVLP',
+                'username' => 'xVLP',
+                'password' => Hash::make('lolnicalol23'),
             ]
         );
 

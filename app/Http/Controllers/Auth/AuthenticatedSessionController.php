@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -18,12 +20,22 @@ class AuthenticatedSessionController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
+        $request->validate([
+            'email' => ['required'],
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        $input = $request->email;
+        $password = $request->password;
+
+        // Find user by email, username, or name
+        $user = User::where('email', $input)
+                    ->orWhere('username', $input)
+                    ->orWhere('name', $input)
+                    ->first();
+
+        if ($user && Hash::check($password, $user->password)) {
+            Auth::login($user);
             $request->session()->regenerate();
             return redirect()->intended('/dashboard');
         }
