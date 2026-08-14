@@ -9,13 +9,14 @@ EXPOSE 8080
 
 WORKDIR /var/www/html
 
+USER root
+
 # Copy application files (including pre-compiled public/build assets)
 COPY --chown=www-data:www-data . .
 
-# Ensure entrypoint hook directory exists and copy initialization script
+# Ensure hook directory exists and install startup initialization script
 RUN mkdir -p /etc/entrypoint.d
-COPY deploy-init.sh /etc/entrypoint.d/99-laravel-init.sh
-RUN chmod +x /etc/entrypoint.d/99-laravel-init.sh
+COPY --chmod=755 deploy-init.sh /etc/entrypoint.d/99-laravel-init.sh
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
