@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <rect width="128" height="128" rx="36" fill="#70482B"/>
+  <rect x="6" y="6" width="116" height="116" rx="30" fill="none" stroke="#A87754" stroke-width="4" opacity="0.4"/>
+  <!-- Central Shield & Monogram V Symbol -->
+  <path d="M64 24 L96 38 V66 C96 86 82 102 64 108 C46 102 32 86 32 66 V38 L64 24 Z" fill="none" stroke="#F8F6F0" stroke-width="6" stroke-linejoin="round"/>
+  <text x="64" y="78" font-family="system-ui, sans-serif" font-weight="900" font-size="44" fill="#F8F6F0" text-anchor="middle">V</text>
+  <!-- Accent Sparkle -->
+  <path d="M92 28 L94.5 33.5 L100 36 L94.5 38.5 L92 44 L89.5 38.5 L84 36 L89.5 33.5 Z" fill="#E6C594"/>
+</svg>

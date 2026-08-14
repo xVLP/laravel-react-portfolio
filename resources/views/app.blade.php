@@ -11,6 +11,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
         <!-- Dynamic Favicon & SEO -->
+        <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+        <link rel="alternate icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
         <meta name="description" content="Veronica Louise Piando (xVLP) - Instructor & System Developer. Specializing in Natural Language Processing (NLP), Computer Vision, Deep Learning, Mobile Vision Apps, and Full Stack Web Architectures.">
         <meta property="og:title" content="Veronica Louise Piando (xVLP) - Portfolio">
         <meta property="og:description" content="Explore my repositories, NLP & Computer Vision projects, mobile applications, and software solutions.">
