@@ -12,7 +12,8 @@ WORKDIR /var/www/html
 # Copy application files (including pre-compiled public/build assets)
 COPY --chown=www-data:www-data . .
 
-# Copy container startup initialization script
+# Ensure entrypoint hook directory exists and copy initialization script
+RUN mkdir -p /etc/entrypoint.d
 COPY deploy-init.sh /etc/entrypoint.d/99-laravel-init.sh
 RUN chmod +x /etc/entrypoint.d/99-laravel-init.sh
 
