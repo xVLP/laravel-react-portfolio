@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 
 export default function Messages({ messages = [] }) {
-    const [filterStatus, setFilterStatus] = useState('all'); // 'all', 'unread', 'read'
+    const [filterStatus, setFilterStatus] = useState('all');
     const [selectedMessageId, setSelectedMessageId] = useState(messages[0]?.id || null);
 
     const filteredMessages = messages.filter((msg) => {
@@ -51,45 +51,45 @@ export default function Messages({ messages = [] }) {
 
             <div className="space-y-6 animate-fadeIn">
                 {/* Header & Filter Bar */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-3xl bg-slate-900/60 backdrop-blur-xl border border-slate-800">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-3xl bg-white border border-[#E4DDD0] shadow-sm">
                     <div>
-                        <h1 className="text-xl font-extrabold text-white tracking-tight flex items-center gap-2">
-                            <Mail className="w-6 h-6 text-indigo-400" />
+                        <h1 className="text-xl font-bold text-[#1F1915] font-serif-editorial tracking-tight flex items-center gap-2">
+                            <Mail className="w-6 h-6 text-[#70482B]" />
                             Visitor Inquiries Inbox
                         </h1>
-                        <p className="text-xs font-mono text-slate-400 mt-1">
+                        <p className="text-xs font-mono text-[#786C62] mt-1">
                             Contact form submissions from recruiters, clients, and software engineering inquiries
                         </p>
                     </div>
 
                     {/* Filter Pills */}
-                    <div className="flex items-center gap-2 bg-slate-950/60 p-1.5 rounded-2xl border border-slate-800">
+                    <div className="flex items-center gap-2 bg-[#FAF8F3] p-1.5 rounded-2xl border border-[#E4DDD0]">
                         <button
                             onClick={() => setFilterStatus('all')}
-                            className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all ${
+                            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all ${
                                 filterStatus === 'all'
-                                    ? 'bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/30'
-                                    : 'text-slate-400 hover:text-white'
+                                    ? 'bg-[#70482B] text-white font-bold shadow-sm'
+                                    : 'text-[#594E45] hover:text-[#1F1915]'
                             }`}
                         >
                             All ({messages.length})
                         </button>
                         <button
                             onClick={() => setFilterStatus('unread')}
-                            className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all ${
+                            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all ${
                                 filterStatus === 'unread'
-                                    ? 'bg-rose-500/20 text-rose-300 font-bold border border-rose-500/30'
-                                    : 'text-slate-400 hover:text-white'
+                                    ? 'bg-rose-600 text-white font-bold shadow-sm'
+                                    : 'text-[#594E45] hover:text-[#1F1915]'
                             }`}
                         >
                             Unread ({messages.filter((m) => !m.is_read).length})
                         </button>
                         <button
                             onClick={() => setFilterStatus('read')}
-                            className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all ${
+                            className={`px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all ${
                                 filterStatus === 'read'
-                                    ? 'bg-slate-800 text-slate-200 font-bold'
-                                    : 'text-slate-400 hover:text-white'
+                                    ? 'bg-white border border-[#E4DDD0] text-[#1F1915] font-bold shadow-sm'
+                                    : 'text-[#594E45] hover:text-[#1F1915]'
                             }`}
                         >
                             Read ({messages.filter((m) => m.is_read).length})
@@ -99,93 +99,88 @@ export default function Messages({ messages = [] }) {
 
                 {/* Split Pane Interface */}
                 {filteredMessages.length === 0 ? (
-                    <div className="p-16 rounded-3xl bg-slate-900/40 border border-slate-800 text-center space-y-3">
-                        <Inbox className="w-12 h-12 text-slate-600 mx-auto" />
-                        <h3 className="text-base font-bold text-white">No inquiries found</h3>
-                        <p className="text-xs font-mono text-slate-400">
-                            Submissions from your portfolio contact form will appear here.
+                    <div className="p-12 rounded-3xl bg-white border border-[#E4DDD0] text-center space-y-3 shadow-sm">
+                        <Inbox className="w-10 h-10 text-[#A89C92] mx-auto" />
+                        <h3 className="text-base font-bold text-[#1F1915]">No messages found</h3>
+                        <p className="text-xs font-mono text-[#786C62]">
+                            Your contact inbox is currently empty under this filter.
                         </p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                        {/* Left List Column (5 cols) */}
-                        <div className="lg:col-span-5 space-y-3 max-h-[680px] overflow-y-auto pr-1">
-                            {filteredMessages.map((msg) => {
-                                const isSelected = activeMessage?.id === msg.id;
-                                return (
-                                    <div
-                                        key={msg.id}
-                                        onClick={() => setSelectedMessageId(msg.id)}
-                                        className={`p-4 rounded-2xl border cursor-pointer transition-all duration-200 space-y-2 ${
-                                            isSelected
-                                                ? 'bg-gradient-to-r from-indigo-950/40 to-slate-900 border-cyan-500/40 shadow-lg shadow-cyan-500/5'
-                                                : msg.is_read
-                                                ? 'bg-slate-900/40 border-slate-800/80 text-slate-400 hover:border-slate-700'
-                                                : 'bg-indigo-950/20 border-indigo-500/30 text-white hover:border-indigo-500/50'
-                                        }`}
-                                    >
-                                        <div className="flex items-center justify-between gap-2">
-                                            <div className="flex items-center gap-2 min-w-0">
-                                                <div className="w-7 h-7 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center font-bold text-indigo-300 text-xs shrink-0">
-                                                    {msg.name?.substring(0, 2).toUpperCase()}
-                                                </div>
-                                                <h4 className="text-xs font-bold text-white truncate">{msg.name}</h4>
+                        {/* Message List Sidebar */}
+                        <div className="lg:col-span-5 space-y-3 max-h-[700px] overflow-y-auto pr-1">
+                            {filteredMessages.map((msg) => (
+                                <div
+                                    key={msg.id}
+                                    onClick={() => setSelectedMessageId(msg.id)}
+                                    className={`p-4 rounded-3xl border cursor-pointer transition-all space-y-2 ${
+                                        selectedMessageId === msg.id
+                                            ? 'bg-[#F2ECE1] border-[#70482B] shadow-sm'
+                                            : msg.is_read
+                                            ? 'bg-white border-[#E4DDD0] hover:bg-[#FAF8F3]'
+                                            : 'bg-white border-[#70482B]/40 hover:bg-[#F2ECE1]/50'
+                                    }`}
+                                >
+                                    <div className="flex items-center justify-between gap-2">
+                                        <div className="flex items-center gap-2 min-w-0">
+                                            <div className="w-7 h-7 rounded-xl bg-[#70482B] text-white flex items-center justify-center font-bold text-xs shrink-0">
+                                                {msg.name?.substring(0, 1).toUpperCase()}
                                             </div>
-
-                                            <div className="flex items-center gap-1.5 shrink-0 text-[10px] font-mono text-slate-400">
-                                                <span>{new Date(msg.created_at).toLocaleDateString()}</span>
-                                                {!msg.is_read && (
-                                                    <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
-                                                )}
-                                            </div>
+                                            <h3 className="text-xs font-bold text-[#1F1915] truncate">{msg.name}</h3>
                                         </div>
 
-                                        <p className="text-xs font-semibold text-slate-200 truncate">{msg.subject}</p>
-                                        <p className="text-xs text-slate-400 line-clamp-1">{msg.message}</p>
+                                        {!msg.is_read && (
+                                            <span className="px-2 py-0.5 rounded-full bg-rose-600 text-white text-[10px] font-mono font-bold shrink-0 shadow-sm">
+                                                NEW
+                                            </span>
+                                        )}
                                     </div>
-                                );
-                            })}
+
+                                    <h4 className="text-xs font-semibold text-[#3D332B] truncate">{msg.subject}</h4>
+                                    <p className="text-xs text-[#786C62] line-clamp-2">{msg.message}</p>
+
+                                    <div className="text-[10px] font-mono text-[#786C62] pt-1 flex items-center justify-between border-t border-[#E4DDD0]">
+                                        <span>{msg.email}</span>
+                                        <span>{new Date(msg.created_at || Date.now()).toLocaleDateString()}</span>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
 
-                        {/* Right Detail Column (7 cols) */}
+                        {/* Selected Message Detail Reader */}
                         <div className="lg:col-span-7">
                             {activeMessage ? (
-                                <div className="p-6 sm:p-8 rounded-3xl bg-slate-900/60 backdrop-blur-xl border border-slate-800 space-y-6 shadow-2xl">
-                                    {/* Message Header */}
-                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-6">
-                                        <div className="flex items-center gap-4">
-                                            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center font-extrabold text-slate-950 text-base shadow-lg shadow-cyan-500/20">
-                                                {activeMessage.name?.substring(0, 2).toUpperCase()}
+                                <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E4DDD0] space-y-6 shadow-sm">
+                                    {/* Reader Header */}
+                                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#E4DDD0]">
+                                        <div className="space-y-1">
+                                            <div className="flex items-center gap-2">
+                                                <span className="px-2.5 py-0.5 rounded-full bg-[#F4EFE6] text-[#70482B] border border-[#E6DFD3] text-[10px] font-mono font-bold">
+                                                    INQUIRY DETAILS
+                                                </span>
+                                                <span className="text-xs font-mono text-[#786C62]">
+                                                    {new Date(activeMessage.created_at || Date.now()).toLocaleString()}
+                                                </span>
                                             </div>
-                                            <div>
-                                                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                                                    {activeMessage.name}
-                                                </h3>
-                                                <a
-                                                    href={`mailto:${activeMessage.email}`}
-                                                    className="text-xs font-mono text-cyan-400 hover:underline block"
-                                                >
-                                                    {activeMessage.email}
-                                                </a>
-                                            </div>
+                                            <h2 className="text-xl font-bold text-[#1F1915] font-serif-editorial">
+                                                {activeMessage.subject}
+                                            </h2>
                                         </div>
 
-                                        {/* Actions */}
-                                        <div className="flex items-center gap-2 text-xs font-mono">
+                                        {/* Action Bar */}
+                                        <div className="flex items-center gap-2 shrink-0">
                                             <button
                                                 onClick={() => handleToggleRead(activeMessage.id)}
-                                                className={`px-3 py-1.5 rounded-xl border transition-colors ${
-                                                    activeMessage.is_read
-                                                        ? 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
-                                                        : 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40 font-bold'
-                                                }`}
+                                                className="px-3 py-1.5 rounded-xl bg-[#FAF8F3] hover:bg-[#F2ECE1] border border-[#E4DDD0] text-[#3D332B] text-xs font-mono font-semibold flex items-center gap-1.5 transition-colors"
                                             >
-                                                {activeMessage.is_read ? 'Mark Unread' : 'Mark Read'}
+                                                <CheckCircle2 className={`w-3.5 h-3.5 ${activeMessage.is_read ? 'text-emerald-600' : 'text-[#786C62]'}`} />
+                                                <span>{activeMessage.is_read ? 'Mark Unread' : 'Mark Read'}</span>
                                             </button>
 
                                             <button
                                                 onClick={() => handleDelete(activeMessage.id)}
-                                                className="p-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 transition-colors"
+                                                className="p-2 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 transition-colors"
                                                 title="Delete Message"
                                             >
                                                 <Trash2 className="w-4 h-4" />
@@ -193,40 +188,42 @@ export default function Messages({ messages = [] }) {
                                         </div>
                                     </div>
 
-                                    {/* Meta & Subject */}
-                                    <div className="space-y-2">
-                                        <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-                                            <Calendar className="w-3.5 h-3.5 text-cyan-400" />
-                                            <span>Received: {new Date(activeMessage.created_at).toLocaleString()}</span>
+                                    {/* Sender Meta Info */}
+                                    <div className="p-4 rounded-2xl bg-[#FAF8F3] border border-[#E4DDD0] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono">
+                                        <div className="space-y-1">
+                                            <div className="font-bold text-[#1F1915] flex items-center gap-2">
+                                                <User className="w-3.5 h-3.5 text-[#70482B]" />
+                                                <span>Sender: {activeMessage.name}</span>
+                                            </div>
+                                            <div className="text-[#70482B] font-semibold flex items-center gap-2">
+                                                <Mail className="w-3.5 h-3.5 text-[#70482B]" />
+                                                <a href={`mailto:${activeMessage.email}`} className="hover:underline">
+                                                    {activeMessage.email}
+                                                </a>
+                                            </div>
                                         </div>
-                                        <h2 className="text-lg font-bold text-white">
-                                            Subject: {activeMessage.subject}
-                                        </h2>
-                                    </div>
 
-                                    {/* Message Content Body */}
-                                    <div className="p-6 rounded-2xl bg-slate-950/60 border border-slate-800/80 text-slate-200 text-sm leading-relaxed whitespace-pre-wrap font-sans">
-                                        {activeMessage.message}
-                                    </div>
-
-                                    {/* Reply Button Footer */}
-                                    <div className="pt-4 border-t border-slate-800 flex items-center justify-between">
                                         <a
-                                            href={`mailto:${activeMessage.email}?subject=Re: ${encodeURIComponent(activeMessage.subject)}`}
-                                            className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-slate-950 font-extrabold text-xs flex items-center gap-2 shadow-lg shadow-cyan-500/20 transition-all hover:scale-105"
+                                            href={`mailto:${activeMessage.email}?subject=RE: ${encodeURIComponent(activeMessage.subject)}`}
+                                            className="px-4 py-2 rounded-xl bg-[#70482B] hover:bg-[#593922] text-white font-semibold text-xs flex items-center gap-1.5 shadow-sm transition-all self-start sm:self-auto"
                                         >
-                                            <Send className="w-4 h-4" />
-                                            <span>Reply via Email</span>
+                                            <Send className="w-3.5 h-3.5" /> Reply via Mail
                                         </a>
+                                    </div>
 
-                                        <span className="text-[11px] font-mono text-slate-500">
-                                            Inquiry ID #{activeMessage.id}
-                                        </span>
+                                    {/* Message Body Content */}
+                                    <div className="space-y-3 pt-2">
+                                        <h3 className="text-xs font-mono uppercase tracking-wider text-[#786C62] font-bold">
+                                            Message Content:
+                                        </h3>
+                                        <div className="p-6 rounded-2xl bg-[#FAF8F3] border border-[#E4DDD0] text-[#1F1915] text-sm leading-relaxed whitespace-pre-wrap font-sans">
+                                            {activeMessage.message}
+                                        </div>
                                     </div>
                                 </div>
                             ) : (
-                                <div className="p-12 rounded-3xl bg-slate-900/40 border border-slate-800 text-center text-slate-400 text-xs font-mono">
-                                    Select an inquiry message from the list to view.
+                                <div className="p-12 rounded-3xl bg-white border border-[#E4DDD0] text-center text-[#786C62] font-mono text-xs shadow-sm">
+                                    Select a message from the list to view inquiry details.
                                 </div>
                             )}
                         </div>

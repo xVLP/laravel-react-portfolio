@@ -47,20 +47,20 @@ export default function AdminLayout({ children, title = 'Control Center' }) {
     ];
 
     return (
-        <div className="min-h-screen bg-[#06080d] text-slate-100 flex flex-col md:flex-row selection:bg-cyan-500 selection:text-slate-950 font-sans antialiased">
+        <div className="min-h-screen bg-[#F8F6F0] text-[#1F1915] flex flex-col md:flex-row selection:bg-[#70482B] selection:text-white font-sans antialiased">
             <Head title={`${title} - Admin Control Center`} />
 
-            {/* Backdrop Blur Overlay for Mobile Drawer */}
+            {/* Mobile Drawer Overlay */}
             {mobileMenuOpen && (
                 <div
-                    className="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-40 md:hidden animate-fadeIn"
+                    className="fixed inset-0 bg-[#1F1915]/60 backdrop-blur-sm z-40 md:hidden animate-fadeIn"
                     onClick={() => setMobileMenuOpen(false)}
                 />
             )}
 
             {/* Desktop & Mobile Sidebar */}
             <aside
-                className={`fixed md:sticky top-0 left-0 h-screen w-72 bg-[#090d16]/90 backdrop-blur-xl border-r border-slate-800/60 z-50 flex flex-col justify-between p-5 transition-transform duration-300 ease-in-out ${
+                className={`fixed md:sticky top-0 left-0 h-screen w-72 bg-[#FAF8F3] backdrop-blur-xl border-r border-[#E4DDD0] z-50 flex flex-col justify-between p-6 transition-transform duration-300 ease-in-out ${
                     mobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'
                 }`}
             >
@@ -68,43 +68,43 @@ export default function AdminLayout({ children, title = 'Control Center' }) {
                     {/* Brand Badge */}
                     <div className="flex items-center justify-between">
                         <Link href="/dashboard" className="flex items-center gap-3 group">
-                            <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-cyan-500/20 via-indigo-500/20 to-purple-500/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:scale-105 group-hover:border-cyan-400 transition-all duration-300 shadow-lg shadow-cyan-500/10">
-                                <Shield className="w-6 h-6" />
+                            <div className="w-11 h-11 rounded-2xl bg-[#70482B] text-white flex items-center justify-center shadow-md shadow-[#70482B]/20 group-hover:scale-105 transition-all duration-300">
+                                <Shield className="w-5 h-5" />
                             </div>
                             <div>
-                                <h1 className="text-base font-extrabold text-white tracking-tight flex items-center gap-1.5">
-                                    xVLP CMS <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
+                                <h1 className="text-base font-extrabold text-[#1F1915] tracking-tight flex items-center gap-1.5 font-serif-editorial">
+                                    xVLP CMS <Sparkles className="w-3.5 h-3.5 text-[#8C5734] animate-pulse" />
                                 </h1>
-                                <p className="text-[11px] font-mono text-slate-400">Control Center</p>
+                                <p className="text-[11px] font-mono text-[#786C62]">Control Center</p>
                             </div>
                         </Link>
 
                         <button
                             onClick={() => setMobileMenuOpen(false)}
-                            className="p-2 rounded-xl text-slate-400 hover:text-white md:hidden"
+                            className="p-2 rounded-xl text-[#786C62] hover:text-[#1F1915] md:hidden"
                         >
                             <X className="w-5 h-5" />
                         </button>
                     </div>
 
                     {/* Database Health Pill */}
-                    <div className="p-3 rounded-2xl bg-cyan-950/40 border border-cyan-500/20 flex items-center justify-between text-xs font-mono">
-                        <div className="flex items-center gap-2 text-cyan-300">
+                    <div className="p-3 rounded-2xl bg-[#F2ECE1] border border-[#E4DDD0] flex items-center justify-between text-xs font-mono">
+                        <div className="flex items-center gap-2 text-[#3D332B]">
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
                             </span>
-                            <Database className="w-3.5 h-3.5 text-cyan-400" />
+                            <Database className="w-3.5 h-3.5 text-[#70482B]" />
                             <span>SQLite Database</span>
                         </div>
-                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-bold border border-cyan-500/30">
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#70482B] text-white font-bold">
                             Active
                         </span>
                     </div>
 
                     {/* Navigation Items */}
                     <nav className="space-y-1.5">
-                        <div className="px-3 pb-2 text-[10px] font-mono uppercase tracking-wider text-slate-400">
+                        <div className="px-3 pb-2 text-[10px] font-mono uppercase tracking-wider text-[#786C62]">
                             Management Suite
                         </div>
                         {navItems.map((item) => {
@@ -114,22 +114,22 @@ export default function AdminLayout({ children, title = 'Control Center' }) {
                                     key={item.name}
                                     href={item.href}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className={`flex items-center justify-between px-3.5 py-3 rounded-2xl text-xs font-medium transition-all duration-200 ${
+                                    className={`flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-medium transition-all duration-200 ${
                                         item.active
-                                            ? 'bg-gradient-to-r from-cyan-500/20 to-indigo-500/10 text-cyan-300 border border-cyan-500/30 shadow-lg shadow-cyan-500/10 font-bold'
-                                            : 'text-slate-400 hover:text-slate-100 hover:bg-slate-800/40 border border-transparent'
+                                            ? 'bg-[#70482B] text-white shadow-md shadow-[#70482B]/20 font-bold'
+                                            : 'text-[#594E45] hover:text-[#1F1915] hover:bg-[#F2ECE1] border border-transparent'
                                     }`}
                                 >
                                     <div className="flex items-center gap-3">
-                                        <Icon className={`w-4 h-4 ${item.active ? 'text-cyan-400' : 'text-slate-400'}`} />
+                                        <Icon className={`w-4 h-4 ${item.active ? 'text-white' : 'text-[#786C62]'}`} />
                                         <span>{item.name}</span>
                                     </div>
                                     {item.badge ? (
-                                        <span className="px-2 py-0.5 rounded-full bg-rose-500 text-white font-mono text-[10px] font-bold shadow-md shadow-rose-500/30">
+                                        <span className="px-2 py-0.5 rounded-full bg-rose-600 text-white font-mono text-[10px] font-bold shadow-sm">
                                             {item.badge}
                                         </span>
                                     ) : (
-                                        item.active && <ChevronRight className="w-3.5 h-3.5 text-cyan-400" />
+                                        item.active && <ChevronRight className="w-3.5 h-3.5 text-white/80" />
                                     )}
                                 </Link>
                             );
@@ -137,28 +137,28 @@ export default function AdminLayout({ children, title = 'Control Center' }) {
                     </nav>
                 </div>
 
-                {/* Sidebar Footer - User & Public Site Links */}
-                <div className="space-y-3 pt-6 border-t border-slate-800/60">
+                {/* Sidebar Footer */}
+                <div className="space-y-3 pt-6 border-t border-[#E4DDD0]">
                     <Link
                         href="/"
                         target="_blank"
-                        className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl bg-slate-900/60 hover:bg-slate-800/80 border border-slate-800 text-xs font-mono text-slate-300 hover:text-white transition-all group"
+                        className="w-full flex items-center justify-between px-4 py-2.5 rounded-2xl bg-white hover:bg-[#F2ECE1] border border-[#E4DDD0] text-xs font-mono text-[#3D332B] transition-all group"
                     >
                         <span className="flex items-center gap-2">
-                            <ExternalLink className="w-3.5 h-3.5 text-cyan-400 group-hover:scale-110 transition-transform" />
+                            <ExternalLink className="w-3.5 h-3.5 text-[#70482B] group-hover:scale-110 transition-transform" />
                             Live Portfolio
                         </span>
-                        <span className="text-[10px] text-slate-400">xVLP &rarr;</span>
+                        <span className="text-[10px] text-[#786C62]">xVLP &rarr;</span>
                     </Link>
 
-                    <div className="flex items-center justify-between p-3 rounded-2xl bg-slate-900/40 border border-slate-800/40">
+                    <div className="flex items-center justify-between p-3 rounded-2xl bg-white border border-[#E4DDD0] shadow-sm">
                         <div className="flex items-center gap-2.5 min-w-0">
-                            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center font-bold text-slate-950 text-xs shadow-md">
+                            <div className="w-8 h-8 rounded-xl bg-[#70482B] text-white flex items-center justify-center font-bold text-xs shadow-sm">
                                 {authUser.name ? authUser.name.charAt(0) : 'V'}
                             </div>
                             <div className="min-w-0">
-                                <p className="text-xs font-bold text-white truncate">{authUser.name}</p>
-                                <p className="text-[10px] font-mono text-slate-400 truncate">{authUser.email}</p>
+                                <p className="text-xs font-bold text-[#1F1915] truncate">{authUser.name}</p>
+                                <p className="text-[10px] font-mono text-[#786C62] truncate">{authUser.email}</p>
                             </div>
                         </div>
 
@@ -166,7 +166,7 @@ export default function AdminLayout({ children, title = 'Control Center' }) {
                             href="/logout"
                             method="post"
                             as="button"
-                            className="p-2 rounded-xl text-rose-400 hover:bg-rose-500/10 hover:text-rose-300 transition-colors"
+                            className="p-2 rounded-xl text-rose-700 hover:bg-rose-50 transition-colors"
                             title="Sign Out"
                         >
                             <LogOut className="w-4 h-4" />
@@ -175,38 +175,38 @@ export default function AdminLayout({ children, title = 'Control Center' }) {
                 </div>
             </aside>
 
-            {/* Main Content Workspace */}
+            {/* Main Workspace */}
             <div className="flex-1 flex flex-col min-w-0">
-                {/* Top App Bar Header */}
-                <header className="sticky top-0 z-30 bg-[#06080d]/80 backdrop-blur-xl border-b border-slate-800/60 px-4 sm:px-8 py-4 flex items-center justify-between">
+                {/* Header App Bar */}
+                <header className="sticky top-0 z-30 bg-[#F8F6F0]/90 backdrop-blur-xl border-b border-[#E4DDD0] px-4 sm:px-8 py-4 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         <button
                             onClick={() => setMobileMenuOpen(true)}
-                            className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 md:hidden"
+                            className="p-2 rounded-xl bg-white border border-[#E4DDD0] text-[#3D332B] md:hidden"
                         >
                             <Menu className="w-5 h-5" />
                         </button>
 
                         <div>
-                            <h2 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
+                            <h2 className="text-xl font-bold text-[#1F1915] tracking-tight font-serif-editorial flex items-center gap-2">
                                 {title}
                             </h2>
-                            <p className="text-xs text-slate-400 font-mono hidden sm:block">
-                                Veronica Louise Piando (xVLP) &bull; Full-Stack Portfolio CMS
+                            <p className="text-xs text-[#786C62] font-mono hidden sm:block">
+                                Veronica Louise Piando (xVLP) &bull; CMS Control Center
                             </p>
                         </div>
                     </div>
 
                     <div className="flex items-center gap-3">
-                        <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
-                            <Activity className="w-3.5 h-3.5 animate-pulse" />
+                        <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono font-semibold">
+                            <Activity className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
                             <span>System Status: Healthy</span>
                         </div>
 
                         <Link
                             href="/"
                             target="_blank"
-                            className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-slate-950 font-bold text-xs flex items-center gap-1.5 shadow-lg shadow-cyan-500/20 transition-all"
+                            className="px-4 py-2 rounded-xl bg-[#70482B] hover:bg-[#593922] text-white font-semibold text-xs flex items-center gap-1.5 shadow-sm transition-all"
                         >
                             <ExternalLink className="w-3.5 h-3.5" />
                             <span>View Site</span>
@@ -214,7 +214,7 @@ export default function AdminLayout({ children, title = 'Control Center' }) {
                     </div>
                 </header>
 
-                {/* Page Body */}
+                {/* Body Content */}
                 <main className="flex-1 p-4 sm:p-8 max-w-7xl w-full mx-auto space-y-8">
                     {children}
                 </main>

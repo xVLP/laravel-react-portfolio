@@ -107,20 +107,20 @@ export default function Projects({ projects = [] }) {
 
             <div className="space-y-6 animate-fadeIn">
                 {/* Header Toolbar */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-3xl bg-slate-900/60 backdrop-blur-xl border border-slate-800">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-3xl bg-white border border-[#E4DDD0] shadow-sm">
                     <div>
-                        <h1 className="text-xl font-extrabold text-white tracking-tight flex items-center gap-2">
-                            <FolderKanban className="w-6 h-6 text-cyan-400" />
+                        <h1 className="text-xl font-bold text-[#1F1915] font-serif-editorial tracking-tight flex items-center gap-2">
+                            <FolderKanban className="w-6 h-6 text-[#70482B]" />
                             Project Showcase Manager
                         </h1>
-                        <p className="text-xs font-mono text-slate-400 mt-1">
+                        <p className="text-xs font-mono text-[#786C62] mt-1">
                             Create, update, or reorganize portfolio showcases and AI repositories
                         </p>
                     </div>
 
                     <button
                         onClick={openCreateModal}
-                        className="px-4 py-2.5 rounded-2xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-slate-950 font-extrabold text-xs flex items-center gap-2 shadow-lg shadow-cyan-500/20 transition-all hover:scale-105"
+                        className="px-4 py-2.5 rounded-xl bg-[#70482B] hover:bg-[#593922] text-white font-semibold text-xs flex items-center gap-2 shadow-sm transition-all"
                     >
                         <Plus className="w-4 h-4" />
                         <span>Add New Project</span>
@@ -137,8 +137,8 @@ export default function Projects({ projects = [] }) {
                                 onClick={() => setSelectedCategory(cat)}
                                 className={`px-3.5 py-1.5 rounded-xl text-xs font-mono whitespace-nowrap transition-all ${
                                     selectedCategory === cat
-                                        ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold shadow-md shadow-cyan-500/10'
-                                        : 'bg-slate-900/40 text-slate-400 hover:text-white border border-slate-800'
+                                        ? 'bg-[#70482B] text-white font-bold shadow-sm'
+                                        : 'bg-white text-[#594E45] hover:text-[#1F1915] border border-[#E4DDD0]'
                                 }`}
                             >
                                 {cat}
@@ -148,18 +148,18 @@ export default function Projects({ projects = [] }) {
 
                     {/* Search Input */}
                     <div className="relative min-w-[260px]">
-                        <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                        <Search className="w-4 h-4 text-[#786C62] absolute left-3.5 top-1/2 -translate-y-1/2" />
                         <input
                             type="text"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder="Filter by title or tech..."
-                            className="w-full pl-10 pr-4 py-2 rounded-2xl bg-slate-900/60 border border-slate-800 text-slate-100 text-xs font-mono placeholder:text-slate-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
+                            className="w-full pl-10 pr-4 py-2 rounded-xl bg-white border border-[#E4DDD0] text-[#1F1915] text-xs font-mono placeholder:text-[#9E9185] focus:outline-none focus:border-[#70482B] transition-colors shadow-sm"
                         />
                         {searchQuery && (
                             <button
                                 onClick={() => setSearchQuery('')}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#786C62] hover:text-[#1F1915]"
                             >
                                 <X className="w-3.5 h-3.5" />
                             </button>
@@ -169,10 +169,10 @@ export default function Projects({ projects = [] }) {
 
                 {/* Projects Grid */}
                 {filteredProjects.length === 0 ? (
-                    <div className="p-12 rounded-3xl bg-slate-900/40 border border-slate-800 text-center space-y-3">
-                        <FolderKanban className="w-10 h-10 text-slate-600 mx-auto" />
-                        <h3 className="text-base font-bold text-white">No projects found</h3>
-                        <p className="text-xs font-mono text-slate-400">
+                    <div className="p-12 rounded-3xl bg-white border border-[#E4DDD0] text-center space-y-3 shadow-sm">
+                        <FolderKanban className="w-10 h-10 text-[#A89C92] mx-auto" />
+                        <h3 className="text-base font-bold text-[#1F1915]">No projects found</h3>
+                        <p className="text-xs font-mono text-[#786C62]">
                             Try adjusting your category filter or search query.
                         </p>
                     </div>
@@ -188,27 +188,27 @@ export default function Projects({ projects = [] }) {
                             return (
                                 <div
                                     key={project.id}
-                                    className="p-6 rounded-3xl bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 hover:border-cyan-500/40 transition-all duration-300 flex flex-col justify-between space-y-4 group shadow-xl"
+                                    className="p-6 rounded-3xl bg-white border border-[#E4DDD0] hover:border-[#70482B]/50 transition-all duration-300 flex flex-col justify-between space-y-4 group shadow-sm hover:shadow-md"
                                 >
                                     <div className="space-y-3">
                                         {/* Header Badges */}
                                         <div className="flex items-center justify-between gap-2">
-                                            <span className="px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 text-[10px] font-mono font-bold">
+                                            <span className="px-2.5 py-0.5 rounded-full bg-[#F4EFE6] text-[#70482B] border border-[#E6DFD3] text-[10px] font-mono font-bold">
                                                 {project.category}
                                             </span>
                                             {project.featured && (
-                                                <span className="px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[10px] font-mono font-bold flex items-center gap-1">
-                                                    <Star className="w-3 h-3 fill-amber-400 text-amber-400" /> Featured
+                                                <span className="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-mono font-bold flex items-center gap-1">
+                                                    <Star className="w-3 h-3 fill-amber-500 text-amber-500" /> Featured
                                                 </span>
                                             )}
                                         </div>
 
                                         {/* Title & Description */}
                                         <div>
-                                            <h3 className="text-base font-bold text-white group-hover:text-cyan-300 transition-colors line-clamp-1">
+                                            <h3 className="text-base font-bold text-[#1F1915] font-serif-editorial group-hover:text-[#70482B] transition-colors line-clamp-1">
                                                 {project.title}
                                             </h3>
-                                            <p className="text-xs text-slate-400 mt-1 line-clamp-2 leading-relaxed">
+                                            <p className="text-xs text-[#6B5E54] mt-1 line-clamp-2 leading-relaxed">
                                                 {project.description}
                                             </p>
                                         </div>
@@ -218,13 +218,13 @@ export default function Projects({ projects = [] }) {
                                             {techStackArray.slice(0, 4).map((tech, idx) => (
                                                 <span
                                                     key={idx}
-                                                    className="px-2 py-0.5 rounded-lg bg-slate-800/60 text-slate-300 border border-slate-700/60 text-[10px] font-mono"
+                                                    className="px-2 py-0.5 rounded-lg bg-[#FAF8F3] text-[#3D332B] border border-[#E4DDD0] text-[10px] font-mono"
                                                 >
                                                     {tech}
                                                 </span>
                                             ))}
                                             {techStackArray.length > 4 && (
-                                                <span className="px-2 py-0.5 rounded-lg bg-slate-800/40 text-slate-400 text-[10px] font-mono">
+                                                <span className="px-2 py-0.5 rounded-lg bg-[#FAF8F3] text-[#786C62] text-[10px] font-mono">
                                                     +{techStackArray.length - 4} more
                                                 </span>
                                             )}
@@ -232,14 +232,14 @@ export default function Projects({ projects = [] }) {
                                     </div>
 
                                     {/* Action Toolbar */}
-                                    <div className="flex items-center justify-between pt-4 border-t border-slate-800/60 text-xs font-mono">
+                                    <div className="flex items-center justify-between pt-4 border-t border-[#E4DDD0] text-xs font-mono">
                                         <div className="flex items-center gap-2">
                                             {project.github_url && (
                                                 <a
                                                     href={project.github_url}
                                                     target="_blank"
                                                     rel="noreferrer"
-                                                    className="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors"
+                                                    className="p-2 rounded-xl bg-[#FAF8F3] hover:bg-[#F2ECE1] text-[#3D332B] border border-[#E4DDD0] transition-colors"
                                                     title="GitHub Repository"
                                                 >
                                                     <Github className="w-3.5 h-3.5" />
@@ -250,7 +250,7 @@ export default function Projects({ projects = [] }) {
                                                     href={project.live_url}
                                                     target="_blank"
                                                     rel="noreferrer"
-                                                    className="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-cyan-400 hover:text-cyan-300 transition-colors"
+                                                    className="p-2 rounded-xl bg-[#FAF8F3] hover:bg-[#F2ECE1] text-[#3D332B] border border-[#E4DDD0] transition-colors"
                                                     title="Live Preview"
                                                 >
                                                     <ExternalLink className="w-3.5 h-3.5" />
@@ -261,13 +261,14 @@ export default function Projects({ projects = [] }) {
                                         <div className="flex items-center gap-2">
                                             <button
                                                 onClick={() => openEditModal(project)}
-                                                className="px-3 py-1.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-bold transition-colors flex items-center gap-1"
+                                                className="px-3 py-1.5 rounded-xl bg-[#FAF8F3] hover:bg-[#F2ECE1] border border-[#E4DDD0] text-[#3D332B] font-bold text-xs flex items-center gap-1 transition-colors"
                                             >
-                                                <Edit3 className="w-3.5 h-3.5" /> Edit
+                                                <Edit3 className="w-3.5 h-3.5 text-[#70482B]" /> Edit
                                             </button>
+
                                             <button
                                                 onClick={() => handleDelete(project.id)}
-                                                className="p-1.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 transition-colors"
+                                                className="p-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-rose-700 transition-colors"
                                                 title="Delete Project"
                                             >
                                                 <Trash2 className="w-3.5 h-3.5" />
@@ -279,136 +280,132 @@ export default function Projects({ projects = [] }) {
                         })}
                     </div>
                 )}
-            </div>
 
-            {/* Create / Edit Project Modal */}
-            {isModalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fadeIn">
-                    <div className="w-full max-w-2xl bg-[#090d16] border border-cyan-500/30 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl shadow-cyan-500/10 max-h-[90vh] overflow-y-auto">
-                        <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-                            <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                                <Sparkles className="w-5 h-5 text-cyan-400" />
-                                {editingProject ? 'Edit Portfolio Showcase' : 'Create Portfolio Showcase'}
-                            </h2>
-                            <button
-                                onClick={() => setIsModalOpen(false)}
-                                className="p-2 rounded-xl text-slate-400 hover:text-white"
-                            >
-                                <X className="w-5 h-5" />
-                            </button>
-                        </div>
-
-                        <form onSubmit={handleSubmit} className="space-y-4 text-xs font-mono">
-                            <div className="space-y-1">
-                                <label className="text-slate-300 font-bold">Project Title *</label>
-                                <input
-                                    type="text"
-                                    required
-                                    value={data.title}
-                                    onChange={(e) => setData('title', e.target.value)}
-                                    placeholder="e.g. Banana Leaf Health Assessment Engine"
-                                    className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder:text-slate-600 focus:outline-none focus:border-cyan-500"
-                                />
-                                {errors.title && <p className="text-rose-400 text-[11px]">{errors.title}</p>}
-                            </div>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div className="space-y-1">
-                                    <label className="text-slate-300 font-bold">Category *</label>
-                                    <select
-                                        value={data.category}
-                                        onChange={(e) => setData('category', e.target.value)}
-                                        className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white focus:outline-none focus:border-cyan-500"
-                                    >
-                                        {categories.filter((c) => c !== 'All').map((cat) => (
-                                            <option key={cat} value={cat}>
-                                                {cat}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-
-                                <div className="space-y-1">
-                                    <label className="text-slate-300 font-bold">Tech Stack (comma-separated)</label>
-                                    <input
-                                        type="text"
-                                        value={data.tech_stack}
-                                        onChange={(e) => setData('tech_stack', e.target.value)}
-                                        placeholder="e.g. Python, PyTorch, OpenCV"
-                                        className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder:text-slate-600 focus:outline-none focus:border-cyan-500"
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="space-y-1">
-                                <label className="text-slate-300 font-bold">Description *</label>
-                                <textarea
-                                    required
-                                    rows={4}
-                                    value={data.description}
-                                    onChange={(e) => setData('description', e.target.value)}
-                                    placeholder="Detailed overview of architecture, features, and engineering achievements..."
-                                    className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder:text-slate-600 focus:outline-none focus:border-cyan-500 font-sans"
-                                />
-                            </div>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div className="space-y-1">
-                                    <label className="text-slate-300 font-bold">Live URL / Demo Link</label>
-                                    <input
-                                        type="url"
-                                        value={data.live_url}
-                                        onChange={(e) => setData('live_url', e.target.value)}
-                                        placeholder="https://example.com"
-                                        className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder:text-slate-600 focus:outline-none focus:border-cyan-500"
-                                    />
-                                </div>
-
-                                <div className="space-y-1">
-                                    <label className="text-slate-300 font-bold">GitHub Repository URL</label>
-                                    <input
-                                        type="url"
-                                        value={data.github_url}
-                                        onChange={(e) => setData('github_url', e.target.value)}
-                                        placeholder="https://github.com/xVLP/repo"
-                                        className="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder:text-slate-600 focus:outline-none focus:border-cyan-500"
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="flex items-center gap-3 pt-2">
-                                <input
-                                    type="checkbox"
-                                    id="featured"
-                                    checked={data.featured}
-                                    onChange={(e) => setData('featured', e.target.checked)}
-                                    className="w-4 h-4 rounded bg-slate-900 border-slate-800 text-cyan-500 focus:ring-0"
-                                />
-                                <label htmlFor="featured" className="text-slate-200 cursor-pointer font-bold">
-                                    Mark as Featured Showcase Project
-                                </label>
-                            </div>
-
-                            <div className="flex items-center justify-end gap-3 pt-6 border-t border-slate-800">
+                {/* Create/Edit Modal Dialog */}
+                {isModalOpen && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1F1915]/60 backdrop-blur-sm animate-fadeIn">
+                        <div className="bg-white border border-[#E4DDD0] rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-6 shadow-2xl max-h-[90vh] overflow-y-auto">
+                            <div className="flex items-center justify-between border-b border-[#E4DDD0] pb-4">
+                                <h2 className="text-xl font-bold text-[#1F1915] font-serif-editorial flex items-center gap-2">
+                                    <Sparkles className="w-5 h-5 text-[#70482B]" />
+                                    {editingProject ? 'Edit Project Showcase' : 'Add New Portfolio Project'}
+                                </h2>
                                 <button
-                                    type="button"
                                     onClick={() => setIsModalOpen(false)}
-                                    className="px-4 py-2.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white"
+                                    className="p-2 rounded-xl text-[#786C62] hover:text-[#1F1915] hover:bg-[#FAF8F3]"
                                 >
-                                    Cancel
-                                </button>
-                                <button
-                                    type="submit"
-                                    disabled={processing}
-                                    className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-slate-950 font-extrabold shadow-lg shadow-cyan-500/20"
-                                >
-                                    {processing ? 'Saving...' : editingProject ? 'Update Showcase' : 'Create Showcase'}
+                                    <X className="w-5 h-5" />
                                 </button>
                             </div>
-                        </form>
+
+                            <form onSubmit={handleSubmit} className="space-y-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div className="sm:col-span-2">
+                                        <label className="block text-xs font-mono text-[#3D332B] mb-1 font-semibold">Project Title *</label>
+                                        <input
+                                            type="text"
+                                            required
+                                            value={data.title}
+                                            onChange={(e) => setData('title', e.target.value)}
+                                            placeholder="e.g. Banana Leaf Health AI Engine"
+                                            className="w-full px-4 py-2.5 rounded-xl bg-[#FAF8F3] border border-[#E4DDD0] text-[#1F1915] text-xs font-mono focus:border-[#70482B] focus:outline-none"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-xs font-mono text-[#3D332B] mb-1 font-semibold">Category *</label>
+                                        <select
+                                            value={data.category}
+                                            onChange={(e) => setData('category', e.target.value)}
+                                            className="w-full px-4 py-2.5 rounded-xl bg-[#FAF8F3] border border-[#E4DDD0] text-[#1F1915] text-xs font-mono focus:border-[#70482B] focus:outline-none"
+                                        >
+                                            {categories.filter(c => c !== 'All').map((cat) => (
+                                                <option key={cat} value={cat}>{cat}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-xs font-mono text-[#3D332B] mb-1 font-semibold">Tech Stack (comma separated) *</label>
+                                        <input
+                                            type="text"
+                                            required
+                                            value={data.tech_stack}
+                                            onChange={(e) => setData('tech_stack', e.target.value)}
+                                            placeholder="Python, OpenCV, PyTorch, React"
+                                            className="w-full px-4 py-2.5 rounded-xl bg-[#FAF8F3] border border-[#E4DDD0] text-[#1F1915] text-xs font-mono focus:border-[#70482B] focus:outline-none"
+                                        />
+                                    </div>
+
+                                    <div className="sm:col-span-2">
+                                        <label className="block text-xs font-mono text-[#3D332B] mb-1 font-semibold">Description *</label>
+                                        <textarea
+                                            rows={3}
+                                            required
+                                            value={data.description}
+                                            onChange={(e) => setData('description', e.target.value)}
+                                            placeholder="Describe the system architecture, machine learning models, or application specs..."
+                                            className="w-full px-4 py-2.5 rounded-xl bg-[#FAF8F3] border border-[#E4DDD0] text-[#1F1915] text-xs font-mono focus:border-[#70482B] focus:outline-none"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-xs font-mono text-[#3D332B] mb-1 font-semibold">GitHub Repository URL</label>
+                                        <input
+                                            type="url"
+                                            value={data.github_url}
+                                            onChange={(e) => setData('github_url', e.target.value)}
+                                            placeholder="https://github.com/xVLP/repo"
+                                            className="w-full px-4 py-2.5 rounded-xl bg-[#FAF8F3] border border-[#E4DDD0] text-[#1F1915] text-xs font-mono focus:border-[#70482B] focus:outline-none"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label className="block text-xs font-mono text-[#3D332B] mb-1 font-semibold">Live Preview / Demo URL</label>
+                                        <input
+                                            type="url"
+                                            value={data.live_url}
+                                            onChange={(e) => setData('live_url', e.target.value)}
+                                            placeholder="https://my-app.com"
+                                            className="w-full px-4 py-2.5 rounded-xl bg-[#FAF8F3] border border-[#E4DDD0] text-[#1F1915] text-xs font-mono focus:border-[#70482B] focus:outline-none"
+                                        />
+                                    </div>
+
+                                    <div className="sm:col-span-2 flex items-center gap-2 pt-2">
+                                        <input
+                                            type="checkbox"
+                                            id="featured"
+                                            checked={data.featured}
+                                            onChange={(e) => setData('featured', e.target.checked)}
+                                            className="w-4 h-4 rounded text-[#70482B] focus:ring-[#70482B]"
+                                        />
+                                        <label htmlFor="featured" className="text-xs font-mono text-[#3D332B] cursor-pointer font-semibold">
+                                            Highlight on Homepage Featured Showcase
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#E4DDD0]">
+                                    <button
+                                        type="button"
+                                        onClick={() => setIsModalOpen(false)}
+                                        className="px-4 py-2 rounded-xl bg-[#FAF8F3] hover:bg-[#F2ECE1] border border-[#E4DDD0] text-[#3D332B] text-xs font-mono"
+                                    >
+                                        Cancel
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        disabled={processing}
+                                        className="px-5 py-2 rounded-xl bg-[#70482B] hover:bg-[#593922] text-white font-semibold text-xs shadow-sm transition-all"
+                                    >
+                                        {processing ? 'Saving...' : editingProject ? 'Save Changes' : 'Create Project'}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            )}
+                )}
+            </div>
         </AdminLayout>
     );
 }
