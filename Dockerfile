@@ -12,10 +12,14 @@ WORKDIR /var/www/html
 # Copy application files (including pre-compiled public/build assets)
 COPY --chown=www-data:www-data . .
 
+# Copy container startup initialization script
+COPY deploy-init.sh /etc/entrypoint.d/99-laravel-init.sh
+RUN chmod +x /etc/entrypoint.d/99-laravel-init.sh
+
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Prepare SQLite database and set directory permissions
+# Prepare SQLite database file & permissions
 RUN touch database/database.sqlite \
     && chown -R www-data:www-data database storage bootstrap/cache \
-    && chmod -R 775 storage bootstrap/cache database
+    && chmod -R 777 database storage bootstrap/cache

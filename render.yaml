@@ -7,10 +7,12 @@ services:
     dockerfilePath: ./Dockerfile
     envVars:
       - key: APP_KEY
-        generateValue: true
+        value: "base64:362qZ15Hr9WoPvZVlx/kMwn/3iw+5g8+JSYLGe/E+eI="
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
         value: "false"
       - key: DB_CONNECTION
         value: sqlite
+      - key: LOG_CHANNEL
+        value: stderr
