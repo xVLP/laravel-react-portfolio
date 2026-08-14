@@ -129,7 +129,7 @@ export default function Welcome({ projects = [], skills = [], experiences = [] }
                                 <span className="text-[#8C5734]">Mobile Apps & <br />Software Solutions.</span>
                             </h1>
                             <p className="text-[#6B5E54] text-base sm:text-lg font-normal leading-relaxed max-w-xl">
-                                <strong className="text-[#1F1915] font-semibold">Veronica Louise Piando (xVLP)</strong> is a COS Instructor and System Developer at Central Bicol State University of Agriculture and Master's Degree Candidate in Computer Vision at Ateneo de Naga University.
+                                <strong className="text-[#1F1915] font-semibold">Veronica Louise Piando (xVLP)</strong> is a COS Instructor and System Developer at Central Bicol State University of Agriculture and Master's Degree Candidate in Computer Science (MSCS, Computer Vision Track) at Ateneo de Naga University.
                             </p>
                         </div>
 
