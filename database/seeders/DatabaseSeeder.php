@@ -14,11 +14,19 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        // Veronica Louise Piando Admin Account
+        // Veronica Louise Piando Admin Accounts
         User::updateOrCreate(
             ['email' => 'veronicapiando.official@gmail.com'],
             [
                 'name' => 'Veronica Louise Piando',
+                'password' => Hash::make('password'),
+            ]
+        );
+
+        User::updateOrCreate(
+            ['email' => 'admin@portfolio.com'],
+            [
+                'name' => 'Administrator',
                 'password' => Hash::make('password'),
             ]
         );

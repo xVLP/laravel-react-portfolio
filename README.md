@@ -37,13 +37,38 @@ A state-of-the-art, high-performance web portfolio featuring a **Laravel 11 PHP 
    npm.cmd install
    ```
 
-3. **Database Setup**:
-   Create the SQLite database file (or configure MySQL in `.env`):
-   ```bash
-   # On Windows PowerShell:
-   New-Item -ItemType File -Path "database/database.sqlite" -Force
+3. **Database Options (Choose One)**:
    
-   # Run migrations and seed sample projects, skills, and admin account:
+   - **Option A: Supabase (Recommended Free Cloud Database)**
+     1. Create a free project at [Supabase.com](https://supabase.com).
+     2. Go to **Project Settings -> Database** to copy host, port, username, and password.
+     3. Update your `.env`:
+        ```ini
+        DB_CONNECTION=pgsql
+        DB_HOST=aws-0-ap-southeast-1.pooler.supabase.com
+        DB_PORT=6543
+        DB_DATABASE=postgres
+        DB_USERNAME=postgres.your_project_id
+        DB_PASSWORD=your_supabase_password
+        ```
+
+   - **Option B: MySQL (Railway, Render, or Local MySQL)**
+     ```ini
+     DB_CONNECTION=mysql
+     DB_HOST=127.0.0.1
+     DB_PORT=3306
+     DB_DATABASE=portfolio
+     DB_USERNAME=root
+     DB_PASSWORD=secret
+     ```
+
+   - **Option C: SQLite (Default Zero-Config File Database)**
+     ```powershell
+     New-Item -ItemType File -Path "database/database.sqlite" -Force
+     ```
+
+   Run migrations and seed default data for any database choice:
+   ```bash
    php artisan migrate:fresh --seed
    ```
 
